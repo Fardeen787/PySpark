@@ -1,0 +1,13 @@
+data=[(1,'fardeen'),(2,'khan')]
+schema=['id','name']
+df=spark.createDataFrame(data=data,schema=schema)
+df.show()
+
+
+df.write.parquet('dbfs:/FileStore/tables/parquetOutput')
+
+
+display(spark.read.parquet('dbfs:/FileStore/tables/parquetOutput'))
+
+
+df.write.parquet('dbfs:/FileStore/tables/parquetOutput',mode='append')
